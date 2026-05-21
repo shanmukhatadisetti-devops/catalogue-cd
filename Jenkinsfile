@@ -49,7 +49,8 @@ pipeline {
                     sh """
                     helm upgrade --install ${COMPONENT} . \
                       --namespace ${params.NAMESPACE} \
-                      --set deployment.imageName=${ACC_ID}.dkr.ecr.${REGION}.amazonaws.com/${PROJECT}/${COMPONENT}:${params.IMAGE_TAG} \
+                      --set deployment.imageName=${ACC_ID}.dkr.ecr.${REGION}.amazonaws.com/${PROJECT}/${COMPONENT} \
+                      --set deployment.imageVersion=${params.IMAGE_TAG} \
                       --set ingress.host=${COMPONENT}-${params.PR_NUMBER}.roboshop.dev
                     """
                 }
