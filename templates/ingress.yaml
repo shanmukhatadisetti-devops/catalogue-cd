@@ -4,7 +4,7 @@ metadata:
   name: catalogue-ingress
   annotations:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:430774481266:certificate/348e9987-2b3f-49bc-8161-
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:430774481266:certificate/348e9987-2b3f-49bc-8161-72c4a4ded5f8
     alb.ingress.kubernetes.io/scheme:  internet-facing
     alb.ingress.kubernetes.io/target-type: ip
 spec:
