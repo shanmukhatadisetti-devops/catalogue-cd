@@ -30,11 +30,13 @@ pipeline {
 
         stage('Create Namespace') {
             steps {
-
-                sh """
-                kubectl create namespace ${params.NAMESPACE} \
-                --dry-run=client -o yaml | kubectl apply -f -
-                """
+                withAWS(credentials: 'aws-cred', region: 'us-east-1') {
+                    sh """
+                    aws eks update-kubeconfig --region us-east-1 --name roboshop-dev
+                    kubectl create namespace ${params.NAMESPACE} \
+                    --dry-run=client -o yaml | kubectl apply -f -
+                    """
+                }
             }
         }
 
